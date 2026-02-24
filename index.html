@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCSR Ranked Leaderboard</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Подключение шрифта (опционально, использую Roboto Mono для цифр и Segoe UI для текста) -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>MCSR Ranked Leaderboard</h1>
+            <div class="add-player-controls">
+                <input type="text" id="playerInput" placeholder="Введите никнейм (например, Feinberg)" autocomplete="off">
+                <button id="addPlayerBtn">Добавить</button>
+            </div>
+        </header>
+
+        <div class="table-wrapper">
+            <table id="leaderboard">
+                <thead>
+                    <!-- Первая строка заголовков (Группы) -->
+                    <tr class="header-groups">
+                        <th colspan="2" class="empty-header"></th> <!-- # и Никнейм -->
+                        <th colspan="5" class="group-ranked">RANKED</th>
+                        <th colspan="4" class="group-casual">CASUAL</th>
+                    </tr>
+                    <!-- Вторая строка заголовков (Колонки) -->
+                    <tr class="header-columns">
+                        <th class="col-rank">#</th>
+                        <th class="col-name">Никнейм</th>
+                        
+                        <!-- Ranked Columns -->
+                        <th class="col-elo" data-sort="elo" title="Нажмите для сортировки">Эло ⬍</th>
+                        <th class="col-time">Ср. Время</th>
+                        <th class="col-time">Лучшее</th>
+                        <th class="col-stat">W</th>
+                        <th class="col-stat">L</th>
+
+                        <!-- Casual Columns -->
+                        <th class="col-time">Ср. Время</th>
+                        <th class="col-time">Лучшее</th>
+                        <th class="col-stat">W</th>
+                        <th class="col-stat">L</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- Сюда будут добавляться игроки через JS -->
+                    <tr class="loading-row"><td colspan="11">Загрузка данных...</td></tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div id="error-message" class="error-msg" style="display: none;"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

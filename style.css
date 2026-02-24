@@ -1,0 +1,221 @@
+:root {
+    --bg-color: #1e2124;
+    --table-bg: #282b30;
+    --table-stripe: #2f343a;
+    --text-primary: #ffffff;
+    --text-secondary: #99aab5;
+    --rank-color: #ffd700;
+    --acc-ranked: #00E9A3;
+    --acc-casual: #7289DA;
+    --acc-win: #43b581; /* Зеленоватый */
+    --acc-loss: #f04747; /* Красноватый */
+    --header-row1: #202225;
+    --header-row2: #2f3136;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+/* ==================
+   Input Controls
+   ================== */
+.add-player-controls {
+    display: flex;
+    gap: 10px;
+}
+
+#playerInput {
+    background-color: var(--table-bg);
+    border: 1px solid #484b51;
+    color: var(--text-primary);
+    padding: 8px 12px;
+    border-radius: 4px;
+    outline: none;
+    font-family: inherit;
+}
+
+#playerInput:focus {
+    border-color: var(--acc-ranked);
+}
+
+#addPlayerBtn {
+    background-color: var(--acc-ranked);
+    color: #1e2124;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+#addPlayerBtn:hover {
+    background-color: #00cca3;
+}
+
+.error-msg {
+    color: var(--acc-loss);
+    margin-top: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* ==================
+   Table Styling
+   ================== */
+.table-wrapper {
+    overflow-x: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--table-bg);
+    min-width: 800px; /* Чтобы не ломалась на мобильных */
+}
+
+/* --- Header --- */
+thead th {
+    text-align: center;
+    padding: 12px 8px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    border-bottom: 2px solid #202225;
+}
+
+/* First Row Headers (Groups) */
+.header-groups th {
+    background-color: var(--header-row1);
+    letter-spacing: 0.05em;
+    padding-top: 16px;
+    border-bottom: 1px solid #484b51; /* Разделитель групп */
+}
+
+.group-ranked {
+    color: var(--acc-ranked);
+    border-left: 1px solid #484b51;
+    border-right: 1px solid #484b51;
+}
+
+.group-casual {
+    color: var(--acc-casual);
+}
+
+/* Second Row Headers (Columns) */
+.header-columns th {
+    background-color: var(--header-row2);
+    font-size: 0.9rem;
+}
+
+.col-rank, .col-name {
+    text-align: left;
+    padding-left: 15px;
+}
+
+.col-elo {
+    color: var(--acc-ranked);
+    cursor: pointer; /* Сортировка */
+    user-select: none;
+}
+
+.col-elo:hover {
+    color: #fff;
+}
+
+/* --- Body --- */
+tbody tr {
+    transition: background-color 0.1s ease;
+}
+
+tbody tr:nth-child(even) {
+    background-color: var(--table-stripe); /* Чередование строк */
+}
+
+tbody tr:hover {
+    background-color: #36393f;
+}
+
+td {
+    padding: 10px 8px;
+    text-align: center;
+    border-bottom: 1px solid #202225;
+    font-variant-numeric: tabular-nums; /* Выравнивание цифр */
+}
+
+/* Specific Columns Styling */
+.rank-cell {
+    font-weight: bold;
+    color: var(--text-secondary);
+    text-align: left;
+    padding-left: 15px;
+    width: 30px;
+}
+
+.name-cell {
+    text-align: left;
+    padding-left: 15px;
+    font-weight: 600;
+}
+
+.elo-cell {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 700;
+    color: var(--acc-ranked);
+}
+
+.time-cell {
+    font-family: 'Roboto Mono', monospace;
+    color: #dcdcdc;
+    font-size: 0.95em;
+}
+
+.win-cell {
+    color: var(--acc-win);
+    font-weight: 600;
+}
+
+.loss-cell {
+    color: var(--acc-loss);
+    font-weight: 600;
+}
+
+.na-text {
+    color: #4f545c;
+    font-size: 0.85em;
+}
+
+.loading-row td {
+    padding: 40px;
+    color: var(--text-secondary);
+    font-style: italic;
+}
