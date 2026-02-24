@@ -93,22 +93,23 @@ h1 {
    ================== */
 .table-wrapper {
     overflow-x: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    /* Removed heavy shadow for simpler look */
+    border: 1px solid #484b51; 
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
     background-color: var(--table-bg);
-    min-width: 800px; /* Чтобы не ломалась на мобильных */
+    min-width: 800px;
 }
 
 /* --- Header --- */
 thead th {
     text-align: center;
     padding: 12px 8px;
-    font-weight: 700;
+    font-weight: 600; /* Slightly lighter weight */
     color: var(--text-secondary);
     border-bottom: 2px solid #202225;
 }
@@ -118,23 +119,33 @@ thead th {
     background-color: var(--header-row1);
     letter-spacing: 0.05em;
     padding-top: 16px;
-    border-bottom: 1px solid #484b51; /* Разделитель групп */
+    border-bottom: none; /* Removed separator for cleaner look */
+    text-transform: uppercase;
 }
 
+/* Explicit Separation Styling */
 .group-ranked {
     color: var(--acc-ranked);
-    border-left: 1px solid #484b51;
-    border-right: 1px solid #484b51;
+    background-color: rgba(0, 233, 163, 0.05); /* Subtle tint */
+    border-right: 2px solid #484b51;
 }
 
 .group-casual {
     color: var(--acc-casual);
+    background-color: rgba(114, 137, 218, 0.05); /* Subtle tint */
 }
 
 /* Second Row Headers (Columns) */
 .header-columns th {
     background-color: var(--header-row2);
     font-size: 0.9rem;
+    border-bottom: 1px solid #484b51;
+}
+
+/* Add vertical divider after Ranked section */
+.header-columns th:nth-child(7),
+tbody td:nth-child(7) {
+    border-right: 2px solid #484b51;
 }
 
 .col-rank, .col-name {

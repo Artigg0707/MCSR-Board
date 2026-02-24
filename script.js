@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- Configuration --- //
-    const players = ['JstCone', 'Sanhez', 'Illumina', 'Feinberg', 'Coure']; 
+    const players = ['JstCone']; 
     const API_URL = 'https://api.mcsrranked.com/users/';
     
     // --- DOM Elements --- //
