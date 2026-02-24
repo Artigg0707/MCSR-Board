@@ -108,7 +108,11 @@ document.addEventListener('DOMContentLoaded', () => {
             // Build the row HTML
             tr.innerHTML = `
                 <td class="rank-cell">#${index + 1}</td>
-                <td class="name-cell">${player.nickname}</td>
+                <td class="name-cell">
+                    <a href="https://mcsrranked.com/profiles/${player.nickname}" target="_blank" class="player-link">
+                        ${player.nickname}
+                    </a>
+                </td>
                 
                 <!-- Ranked -->
                 <td class="elo-cell">${player.elo > 0 ? player.elo : '<span class="na-text">-</span>'}</td>
