@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- Configuration --- //
-    const players = ['JstCone']; 
+    const players = ['JstCone', 'homaktop226']; 
     const API_URL = 'https://api.mcsrranked.com/users/';
     
     // --- DOM Elements --- //
