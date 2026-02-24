@@ -12,6 +12,22 @@ document.addEventListener('DOMContentLoaded', () => {
     let playerDataList = []; // Array to store fetched player data
     let fetchPromises = []; // To keep track of loading
 
+    // --- Ranks Configuration --- //
+    // Thresholds: Netherite (2000+), Diamond (1500+), Emerald (1200+), Gold (900+), Iron (600+), Coal (0+)
+    const RANKS = [
+        { name: 'Netherite', minElo: 2000, icon: 'https://minecraft.wiki/images/Netherite_Ingot_JE1_BE2.png' },
+        { name: 'Diamond', minElo: 1500, icon: 'https://minecraft.wiki/images/Diamond_JE3_BE3.png' },
+        { name: 'Emerald', minElo: 1200, icon: 'https://minecraft.wiki/images/Emerald_JE3_BE3.png' },
+        { name: 'Gold', minElo: 900, icon: 'https://minecraft.wiki/images/Gold_Ingot_JE4_BE2.png' },
+        { name: 'Iron', minElo: 600, icon: 'https://minecraft.wiki/images/Iron_Ingot_JE3_BE2.png' },
+        { name: 'Coal', minElo: 0, icon: 'https://minecraft.wiki/images/Coal_JE4_BE3.png' }
+    ];
+
+    function getRank(elo) {
+        if (!elo || elo <= 0) return null;
+        return RANKS.find(r => elo >= r.minElo) || RANKS[RANKS.length - 1];
+    }
+    
     // --- Time Formatter --- //
     // Converts milliseconds to MM:SS.ms (e.g., 16:58.192)
     function formatTime(ms) {
@@ -105,6 +121,11 @@ document.addEventListener('DOMContentLoaded', () => {
         dataList.forEach((player, index) => {
             const tr = document.createElement('tr');
             
+            // Determine Rank
+            const rankObj = getRank(player.elo);
+            const rankIconHtml = rankObj ? 
+                `<img src="${rankObj.icon}" alt="${rankObj.name}" title="${rankObj.name}" class="rank-icon-img">` : '';
+
             // Build the row HTML
             tr.innerHTML = `
                 <td class="rank-cell">#${index + 1}</td>
@@ -115,7 +136,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 </td>
                 
                 <!-- Ranked -->
-                <td class="elo-cell">${player.elo > 0 ? player.elo : '<span class="na-text">-</span>'}</td>
+                <td class="elo-cell">
+                    ${player.elo > 0 ? player.elo : '<span class="na-text">-</span>'}
+                    ${rankIconHtml}
+                </td>
                 <td class="time-cell">${player.rankedParams.average_time}</td>
                 <td class="time-cell">${player.rankedParams.best_time}</td>
                 <td class="win-cell">${player.rankedParams.wins}</td>

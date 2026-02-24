@@ -245,3 +245,20 @@ td {
     color: #ffffff;
     text-decoration: underline;
 }
+/* ==================
+   Rank Icons 
+   ================== */
+.rank-icon-img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-left: 8px; /* Сдвигаем иконку чуть правее от цифры Elo */
+    image-rendering: pixelated; /* Для четкости пиксель-арта */
+}
+
+.elo-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px; /* Небольшой отступ между цифрой и иконкой */
+}
